@@ -38,11 +38,14 @@ const Home = ({ dishes }) => {
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
   }, [orderItems]);
 
-  const filterDishes = (dishes) =>
-    activeType === "all"
+  const filterDishes = (dishes) => {
+    const trimmedActiveType = activeType.trim().toLowerCase(); // Normalize active type
+    return trimmedActiveType === "all"
       ? dishes
-      : dishes.filter((dish) => dish.category === activeType);
-
+      : dishes.filter((dish) =>
+          dish.category?.trim().toLowerCase() === trimmedActiveType
+        );
+  };
   const togglePayment = () => setPayment((prev) => !prev);
   const toggleOrderSection = () => setOrderSection((prev) => !prev);
 
@@ -76,7 +79,7 @@ const Home = ({ dishes }) => {
       <main className="w-full lg:w-full min-h-screen mt-3">
         <div className="flex justify-between gap-2 w-full">
           <div className="w-[100%] lg:w-[60%] lg:mx-5">
-            <Header name="Jaeger Rae" date="Tuesday, 12 FEB 2024" />
+            <Header name="Jaeger Rae" date="Tuesday, 12 FEB 2024"  />
             <div className="flex justify-between px-3 gap-16 items-center text-white mt-8 border-b-2 border-light-gray overflow-x-auto">
               {dishType.map((type) => (
                 <span
