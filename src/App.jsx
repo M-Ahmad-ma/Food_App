@@ -95,7 +95,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home dishes={dishes} />} />
           <Route path="/dashboard" element={<Dashboard dishes={dishes} />} />
-          <Route path="/settings" element={<Settings dishes={dishes} addDish={addDish} />} />
+          <Route path="/settings" element={<Settings dishes={dishes} addDish={addDish} setDishes={setDishes} />} />
         </Routes>
       </div>
     </Router>
