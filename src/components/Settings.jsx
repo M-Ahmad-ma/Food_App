@@ -11,7 +11,7 @@ const Settings = ({ dishes, addDish }) => {
     category: "",
   });
   const [showForm, setShowForm] = useState(false);
-  const [editDish, setEditDish] = useState(null); // Track the dish being edited
+  const [editDish, setEditDish] = useState(null); 
   const [activeCategory, setActiveCategory] = useState("Hot dishes");
   const [dishesList, setDishesList] = useState(dishes);
 
@@ -74,7 +74,7 @@ const Settings = ({ dishes, addDish }) => {
     const updatedDishes = dishesList.filter((dish) => dish.id !== id);
     localStorage.setItem("dishes", JSON.stringify(updatedDishes));
     setDishesList(updatedDishes);
-    setEditDish(null); // Close the form after deletion
+    setEditDish(null); 
   };
 
   return (
